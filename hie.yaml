@@ -1,0 +1,16 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "extensible-th:lib"
+
+    - path: "./app/Main.hs"
+      component: "extensible-th:exe:extensible-th-exe"
+
+    - path: "./app/Paths_extensible_th.hs"
+      component: "extensible-th:exe:extensible-th-exe"
+
+    - path: "./doctests"
+      component: "extensible-th:test:doctests"
+
+    - path: "./test"
+      component: "extensible-th:test:extensible-th-test"
