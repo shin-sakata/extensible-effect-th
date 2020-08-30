@@ -72,10 +72,10 @@ default-extensions:
 library:
   source-dirs: src
 
-executables:
-  extensible-th-exe:
+tests:
+  examples:
     main: Main.hs
-    source-dirs: app
+    source-dirs: Examples
     ghc-options:
       - -threaded
       - -rtsopts
@@ -83,7 +83,6 @@ executables:
     dependencies:
       - extensible-th
 
-tests:
   spectests:
     main: Spec.hs
     source-dirs: test
