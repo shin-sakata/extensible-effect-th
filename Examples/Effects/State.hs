@@ -23,10 +23,9 @@ decEffects
     |]
 
 {-
-    data State s_a6Q9 a_a6Qa
-      where
-        Get :: State s_a6Qb s_a6Qb
-        Put :: s_a6Qc -> State s_a6Qc ()
+    data State s_a7f1 a_a7f2 where
+      Get :: State s_a7f3 s_a7f3
+      Put :: s_a7f4 -> State s_a7f4 ()
 
     type EffName = "State"
     type AnonEff = State

@@ -34,7 +34,7 @@ mkEffTypes1 name =
       name2AnonEff (getName $ mkName $ nameBase name),
       tyVarBndrs2NamedEff [PlainTV (mkName "a")],
       tyVarBndrs2HasEff [PlainTV (mkName "a")],
-      tyVarBndrs2liftSig [PlainTV (mkName "x")],
+      tyVarBndrs2liftSig [PlainTV (mkName "a")],
       liftVal
     ]
 
@@ -45,7 +45,7 @@ mkEffTypes2 name =
       name2AnonEff (getName $ mkName $ nameBase name),
       tyVarBndrs2NamedEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
       tyVarBndrs2HasEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
-      tyVarBndrs2liftSig [PlainTV (mkName "x"), PlainTV (mkName "y")],
+      tyVarBndrs2liftSig [PlainTV (mkName "a"), PlainTV (mkName "b")],
       liftVal
     ]
 

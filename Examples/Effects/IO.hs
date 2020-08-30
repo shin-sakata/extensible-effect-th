@@ -14,10 +14,12 @@ import TH (mkEffTypes)
 $(mkEffTypes ''IO)
 
 {-
+  Generated definitions.
+
     type EffName = "IO"
     type AnonEff = IO
     type NamedEff = (>:) EffName AnonEff
     type HasEff effs = Lookup effs EffName AnonEff
-    lift :: HasEff effs => AnonEff x -> Eff effs x
+    lift :: HasEff effs => AnonEff a -> Eff effs a
     lift = liftEff (Proxy @EffName)
 -}
