@@ -9,7 +9,7 @@ where
 
 import Data.Extensible
 import Data.Extensible.Effect
-import TH (mkEffTypes)
+import Data.Extensible.Effect.TH.Util (mkEffTypes)
 
 $(mkEffTypes ''IO)
 

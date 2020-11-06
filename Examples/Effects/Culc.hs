@@ -14,7 +14,7 @@ where
 
 import Data.Extensible
 import Data.Extensible.Effect
-import TH (decEffects)
+import Data.Extensible.Effect.TH.Util (decEffects)
 import Prelude hiding (div)
 
 decEffects

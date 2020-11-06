@@ -1,4 +1,4 @@
-module TH (decEffects, customDecEffectsUtils, mkEffTypes, mkEffTypes1, mkEffTypes2) where
+module Data.Extensible.Effect.TH.Util (decEffects, customDecEffectsUtils, mkEffTypes, mkEffTypes1, mkEffTypes2) where
 
 import Control.Monad (replicateM)
 import Data.Char (toLower, toUpper)

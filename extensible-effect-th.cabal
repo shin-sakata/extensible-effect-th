@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c5e67e62b8d8a94369a07f55bb4c1db70da359aaa912739c708a0c376282b628
+-- hash: 75ae2b2d899519b5c77e3ae5751dca4cc6e981fd6b71701ee4da939db6af21df
 
 name:           extensible-effect-th
 version:        0.1.0.0
@@ -27,7 +27,7 @@ source-repository head
 
 library
   exposed-modules:
-      TH
+      Data.Extensible.Effect.TH.Util
   other-modules:
       Paths_extensible_effect_th
   hs-source-dirs:

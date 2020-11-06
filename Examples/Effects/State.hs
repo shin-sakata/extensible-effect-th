@@ -12,7 +12,7 @@ where
 
 import Data.Extensible
 import Data.Extensible.Effect hiding (State, get)
-import TH (decEffects)
+import Data.Extensible.Effect.TH.Util (decEffects)
 import Prelude hiding (div)
 
 decEffects
