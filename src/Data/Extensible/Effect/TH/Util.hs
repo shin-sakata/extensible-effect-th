@@ -1,4 +1,14 @@
-module Data.Extensible.Effect.TH.Util (decEffects, customDecEffectsUtils, mkEffTypes, mkEffTypes1, mkEffTypes2) where
+module Data.Extensible.Effect.TH.Util
+  ( decEffects,
+    customDecEffectsUtils,
+    mkEffTypes,
+    mkEffTypes1,
+    mkEffTypes2,
+    mkIOEffTypes,
+    mkIOEffTypes1,
+    mkIOEffTypes2,
+  )
+where
 
 import Control.Monad (replicateM)
 import Data.Char (toLower)
@@ -26,6 +36,9 @@ customDecEffectsUtils synTypes synFuncs decsq = do
 mkEffTypes :: Name -> DecsQ
 mkEffTypes = mkEffTypes1
 
+mkIOEffTypes :: Name -> DecsQ
+mkIOEffTypes = mkIOEffTypes2
+
 mkEffTypes1 :: Name -> DecsQ
 mkEffTypes1 name =
   pure
@@ -37,10 +50,32 @@ mkEffTypes1 name =
       liftVal
     ]
 
+mkIOEffTypes1 :: Name -> DecsQ
+mkIOEffTypes1 name =
+  pure
+    [ name2EffName ''IO,
+      name2AnonEff (getName $ mkName $ nameBase name),
+      tyVarBndrs2NamedEff [PlainTV (mkName "a")],
+      tyVarBndrs2HasEff [PlainTV (mkName "a")],
+      tyVarBndrs2liftSig [PlainTV (mkName "a")],
+      liftVal
+    ]
+
 mkEffTypes2 :: Name -> DecsQ
 mkEffTypes2 name =
   pure
     [ name2EffName (getName $ mkName $ nameBase name),
+      name2AnonEff (getName $ mkName $ nameBase name),
+      tyVarBndrs2NamedEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
+      tyVarBndrs2HasEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
+      tyVarBndrs2liftSig [PlainTV (mkName "a"), PlainTV (mkName "b")],
+      liftVal
+    ]
+
+mkIOEffTypes2 :: Name -> DecsQ
+mkIOEffTypes2 name =
+  pure
+    [ name2EffName ''IO,
       name2AnonEff (getName $ mkName $ nameBase name),
       tyVarBndrs2NamedEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
       tyVarBndrs2HasEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
