@@ -4,16 +4,16 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b70f8a683d10e8ccdec27b28784018c5cac7ed1b879d13f4ae45b168ccd7cdb0
+-- hash: c5e67e62b8d8a94369a07f55bb4c1db70da359aaa912739c708a0c376282b628
 
-name:           extensible-th
+name:           extensible-effect-th
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/extensible-th#readme>
-homepage:       https://github.com/githubuser/extensible-th#readme
-bug-reports:    https://github.com/githubuser/extensible-th/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2020 Author name here
+description:    Please see the README on GitHub at <https://github.com/shin-sakata/extensible-effect-th#readme>
+homepage:       https://github.com/shin-sakata/extensible-effect-th#readme
+bug-reports:    https://github.com/shin-sakata/extensible-effect-th/issues
+author:         shintaro sakata
+maintainer:     shintaro.sakata.tokyo@gmail.com
+copyright:      2020 shintaro sakata
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -23,13 +23,13 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/extensible-th
+  location: https://github.com/shin-sakata/extensible-effect-th
 
 library
   exposed-modules:
       TH
   other-modules:
-      Paths_extensible_th
+      Paths_extensible_effect_th
   hs-source-dirs:
       src
   default-extensions: BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveDataTypeable DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DoAndIfThenElse EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PartialTypeSignatures PatternGuards PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TupleSections TypeApplications TypeFamilies TypeOperators TypeSynonymInstances ViewPatterns
@@ -46,7 +46,7 @@ test-suite doctests
   type: exitcode-stdio-1.0
   main-is: Doctests.hs
   other-modules:
-      Paths_extensible_th
+      Paths_extensible_effect_th
   hs-source-dirs:
       doctests
   default-extensions: BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveDataTypeable DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DoAndIfThenElse EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PartialTypeSignatures PatternGuards PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TupleSections TypeApplications TypeFamilies TypeOperators TypeSynonymInstances ViewPatterns
@@ -56,8 +56,8 @@ test-suite doctests
     , containers
     , doctest
     , extensible
+    , extensible-effect-th
     , extensible-skeleton
-    , extensible-th
     , membership
     , template-haskell
   default-language: Haskell2010
@@ -72,7 +72,7 @@ test-suite examples
       Handler.Culc.Human
       Handler.Culc.Pure
       Usecase.Culc
-      Paths_extensible_th
+      Paths_extensible_effect_th
   hs-source-dirs:
       Examples
   default-extensions: BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveDataTypeable DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DoAndIfThenElse EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PartialTypeSignatures PatternGuards PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TupleSections TypeApplications TypeFamilies TypeOperators TypeSynonymInstances ViewPatterns
@@ -81,8 +81,8 @@ test-suite examples
       base >=4.7 && <5
     , containers
     , extensible
+    , extensible-effect-th
     , extensible-skeleton
-    , extensible-th
     , membership
     , template-haskell
   default-language: Haskell2010
@@ -91,7 +91,7 @@ test-suite spectests
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Paths_extensible_th
+      Paths_extensible_effect_th
   hs-source-dirs:
       test
   default-extensions: BangPatterns BinaryLiterals ConstraintKinds DataKinds DefaultSignatures DeriveDataTypeable DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DoAndIfThenElse EmptyDataDecls ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns OverloadedStrings PartialTypeSignatures PatternGuards PolyKinds QuasiQuotes RankNTypes RecordWildCards ScopedTypeVariables StandaloneDeriving TemplateHaskell TupleSections TypeApplications TypeFamilies TypeOperators TypeSynonymInstances ViewPatterns
@@ -100,8 +100,8 @@ test-suite spectests
       base >=4.7 && <5
     , containers
     , extensible
+    , extensible-effect-th
     , extensible-skeleton
-    , extensible-th
     , hspec
     , membership
     , template-haskell

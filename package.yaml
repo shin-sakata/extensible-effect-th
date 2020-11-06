@@ -1,10 +1,10 @@
-name: extensible-th
+name: extensible-effect-th
 version: 0.1.0.0
-github: "githubuser/extensible-th"
+github: shin-sakata/extensible-effect-th
 license: BSD3
-author: "Author name here"
-maintainer: "example@example.com"
-copyright: "2020 Author name here"
+author: shintaro sakata
+maintainer: shintaro.sakata.tokyo@gmail.com
+copyright: 2020 shintaro sakata
 
 extra-source-files:
   - README.md
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description: Please see the README on GitHub at <https://github.com/githubuser/extensible-th#readme>
+description: Please see the README on GitHub at <https://github.com/shin-sakata/extensible-effect-th#readme>
 
 dependencies:
   - base >= 4.7 && < 5
@@ -81,7 +81,7 @@ tests:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - extensible-th
+      - extensible-effect-th
 
   spectests:
     main: Spec.hs
@@ -91,7 +91,7 @@ tests:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - extensible-th
+      - extensible-effect-th
       - hspec
 
   doctests:
@@ -104,5 +104,5 @@ tests:
       - -main-is
       - Doctests
     dependencies:
-      - extensible-th
+      - extensible-effect-th
       - doctest

@@ -1,3 +1,3 @@
-# Changelog for extensible-th
+# Changelog for extensible-effect-th
 
 ## Unreleased changes

@@ -1,13 +1,13 @@
 cradle:
   stack:
     - path: "./src"
-      component: "extensible-th:lib"
+      component: "extensible-effect-th:lib"
 
     - path: "./doctests"
-      component: "extensible-th:test:doctests"
+      component: "extensible-effect-th:test:doctests"
 
     - path: "./Examples"
-      component: "extensible-th:test:examples"
+      component: "extensible-effect-th:test:examples"
 
     - path: "./test"
-      component: "extensible-th:test:spectests"
+      component: "extensible-effect-th:test:spectests"
