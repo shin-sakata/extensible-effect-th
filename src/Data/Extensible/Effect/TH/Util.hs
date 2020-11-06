@@ -1,8 +1,7 @@
 module Data.Extensible.Effect.TH.Util (decEffects, customDecEffectsUtils, mkEffTypes, mkEffTypes1, mkEffTypes2) where
 
 import Control.Monad (replicateM)
-import Data.Char (toLower, toUpper)
-import Data.Extensible.Effect
+import Data.Char (toLower)
 import Language.Haskell.TH
 import Language.Haskell.TH.Syntax
 
@@ -50,7 +49,7 @@ mkEffTypes2 name =
     ]
 
 gadts2funcsD :: Dec -> DecsQ
-gadts2funcsD (DataD cxt name tyVarBndr _ constructors _) = do
+gadts2funcsD (DataD _cxt _name tyVarBndr _ constructors _) = do
   decs <- mapM f constructors
   pure $ concat decs
   where
@@ -91,16 +90,16 @@ gadtC2type (GadtC _ bangtypes typ) =
   where
     f :: BangType -> Pred -> Pred
     f (_, l@(ConT _)) r = AppT (AppT ArrowT l) r
-    f (_, l@(VarT name)) r = AppT (AppT ArrowT (VarT (getName name))) r
+    f (_, _l@(VarT name)) r = AppT (AppT ArrowT (VarT (getName name))) r
     g :: Pred -> Pred
-    g (AppT _ last@(VarT name)) = (AppT (AppT (ConT (mkName "Eff")) (VarT (mkName "effs"))) $ VarT $ getName name)
-    g (AppT _ last@(ConT name)) = (AppT (AppT (ConT (mkName "Eff")) (VarT (mkName "effs"))) $ ConT $ getName $ mkName $ nameBase name)
+    g (AppT _ _last@(VarT name)) = (AppT (AppT (ConT (mkName "Eff")) (VarT (mkName "effs"))) $ VarT $ getName name)
+    g (AppT _ _last@(ConT name)) = (AppT (AppT (ConT (mkName "Eff")) (VarT (mkName "effs"))) $ ConT $ getName $ mkName $ nameBase name)
     g (AppT _ last) = (AppT (AppT (ConT (mkName "Eff")) (VarT (mkName "effs"))) last)
 
 ---------------------------------------------------------------------------------------------------------
 
 gadtC2Clause :: Con -> Q Clause
-gadtC2Clause con@(GadtC _ bangtypes typ) = do
+gadtC2Clause con@(GadtC _ bangtypes _typ) = do
   let names = map snd (zip bangtypes uniqueNames)
   let pats = namesC2pats names
   let body = gadtCWithNames2body con names
@@ -118,7 +117,7 @@ namesC2pats names =
 -- >>> gadtCWithNames2body con [(mkName "int"), (mkName "a")]
 -- NormalB (AppE (VarE lift) (AppE (AppE (UnboundVarE Blah) (VarE int)) (VarE a)))
 gadtCWithNames2body :: Con -> [Name] -> Body
-gadtCWithNames2body (GadtC [name] _ typ) args =
+gadtCWithNames2body (GadtC [name] _ _typ) args =
   NormalB (AppE (VarE (mkName "lift")) (foldl f (UnboundVarE $ getName name) args))
   where
     f :: Exp -> Name -> Exp
@@ -152,7 +151,7 @@ uniqueNames :: [Name]
 uniqueNames = map mkName $ concatMap (flip replicateM ['a' .. 'z']) [1 ..]
 
 splitBy :: (a -> Bool) -> [a] -> [[a]]
-splitBy p [] = []
+splitBy _p [] = []
 splitBy p xs = a : (splitBy p $ dropWhile p $ b)
   where
     (a, b) = break p xs
@@ -160,7 +159,7 @@ splitBy p xs = a : (splitBy p $ dropWhile p $ b)
 ---------------------------------------------------------------------------------------------------------
 
 gadt2utilTypes :: Dec -> DecsQ
-gadt2utilTypes (DataD cxt name tyVarBndr _ constructors _) =
+gadt2utilTypes (DataD _cxt name tyVarBndr _ _constructors _) =
   pure
     [ name2EffName name,
       name2AnonEff name,
@@ -210,7 +209,7 @@ tyVarBndrs2HasEff tyVarBndrs = do
 
 ---------------------------------------------------------------------------------------------------------
 gadt2lift :: Dec -> [Dec]
-gadt2lift gadt@(DataD cxt name tyVarBndrs _ constructors _) =
+gadt2lift _gadt@(DataD _cxt _name tyVarBndrs _ _constructors _) =
   [ tyVarBndrs2liftSig tyVarBndrs,
     liftVal
   ]
@@ -252,7 +251,7 @@ constGadts (DataD cxt name tyVarBndr kind constructors dc) =
 
     constTyp :: Type -> Type
     constTyp (ConT name) = (ConT $ getName $ mkName $ nameBase name)
-    constTyp t@(TupleT n) = t
+    constTyp t@(TupleT _n) = t
     constTyp t@(VarT _) = t
     constTyp (AppT r l) = AppT (constTyp r) (constTyp l)
     constTyp err = error $ show err

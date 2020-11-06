@@ -1,7 +1,6 @@
 module Usecase.Culc where
 
 import Data.Extensible.Effect
-import Data.Extensible.Effect.Default
 import qualified Effects.Culc as Culc
 
 culc ::

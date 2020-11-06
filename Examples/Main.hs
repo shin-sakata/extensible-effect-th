@@ -1,11 +1,8 @@
 module Main where
 
-import Control.Exception
-import Data.Extensible
 import Data.Extensible.Effect
-import Data.Extensible.Effect.Default
-import qualified Effects.Culc as Culc
-import qualified Handler.Culc.Human as Human
+-- import qualified Effects.Culc as Culc
+-- import qualified Handler.Culc.Human as Human
 import qualified Handler.Culc.Pure as Pure
 import Usecase.Culc
 

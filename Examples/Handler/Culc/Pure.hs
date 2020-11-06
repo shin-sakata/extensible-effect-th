@@ -1,12 +1,11 @@
 module Handler.Culc.Pure where
 
-import Data.Extensible
 import Data.Extensible.Effect
 import Effects.Culc (Culc (..))
 import qualified Effects.Culc as Culc
 
 run ::
-  forall env effs a.
+  forall effs a.
   Eff (Culc.NamedEff ': effs) a ->
   Eff effs a
 run effs = peelEff0 pure interpret effs

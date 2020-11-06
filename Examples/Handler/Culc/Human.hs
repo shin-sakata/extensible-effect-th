@@ -1,13 +1,12 @@
 module Handler.Culc.Human where
 
-import Data.Extensible
 import Data.Extensible.Effect
 import Effects.Culc (Culc (..))
 import qualified Effects.Culc as Culc
 import qualified Effects.IO as IO
 
 run ::
-  forall env effs a.
+  forall effs a.
   IO.HasEff effs =>
   Eff (Culc.NamedEff ': effs) a ->
   Eff effs a
