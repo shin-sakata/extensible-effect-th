@@ -53,7 +53,7 @@ mkEffTypes1 name =
 mkIOEffTypes1 :: Name -> DecsQ
 mkIOEffTypes1 name =
   pure
-    [ name2EffName ''IO,
+    [ name2EffName $ mkName "IO",
       name2AnonEff (getName $ mkName $ nameBase name),
       tyVarBndrs2NamedEff [PlainTV (mkName "a")],
       tyVarBndrs2HasEff [PlainTV (mkName "a")],
@@ -75,7 +75,7 @@ mkEffTypes2 name =
 mkIOEffTypes2 :: Name -> DecsQ
 mkIOEffTypes2 name =
   pure
-    [ name2EffName ''IO,
+    [ name2EffName $ mkName "IO",
       name2AnonEff (getName $ mkName $ nameBase name),
       tyVarBndrs2NamedEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
       tyVarBndrs2HasEff [PlainTV (mkName "a"), PlainTV (mkName "b")],
